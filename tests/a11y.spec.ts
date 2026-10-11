@@ -49,8 +49,9 @@ test('the system dark scheme applies without JS', async ({ browser }) => {
   await context.close();
 });
 
-test('the App Store badge says the app is coming soon until the listing exists', async ({ page }) => {
+test('until the listing exists, the App Store button is plain text with no badge', async ({ page }) => {
   await page.goto('./');
-  await expect(page.locator('a.store')).toHaveCount(0);
-  await expect(page.locator('.store.soon').first()).toContainText('Sprint is coming soon to the App Store');
+  await expect(page.locator('.store')).toHaveCount(0);
+  await expect(page.locator('img[src$="download-on-the-app-store.svg"]')).toHaveCount(0);
+  await expect(page.locator('.soon')).toHaveText(['Coming soon to the App Store', 'Coming soon to the App Store']);
 });

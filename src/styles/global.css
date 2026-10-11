@@ -26,9 +26,10 @@ img{max-width:100%}
 .store{display:inline-flex;align-items:center;gap:calc(var(--badge-h,54px) / 4);margin:calc(var(--badge-h,54px) / 4);text-decoration:none;flex:none}
 .store img{display:block}
 .store.compact{margin:4px 0}
-.soon-label{color:var(--ink2);font-size:15px;font-weight:500;white-space:nowrap}
-.store.compact .soon-label{font-size:14px}
 .page .store{margin-block:0}
+/* Until the listing exists: plain text, no badge shape. */
+.soon{margin:0;font-size:17px;font-weight:600;letter-spacing:-.1px;color:var(--ink);white-space:nowrap}
+.soon.compact{font-size:14px;font-weight:500;color:var(--ink2)}
 
 /* Simple pages (placeholder home, 404) */
 .page{padding-inline:var(--gutter);padding-block:clamp(64px,12vw,160px);display:flex;flex-direction:column;align-items:center;gap:22px;text-align:center}
@@ -97,8 +98,7 @@ img{max-width:100%}
 @media (max-width:520px){
   .prose{font-size:18.5px;line-height:1.58}
 }
-/* With the Blog link beside it, the header badge's label no longer fits on a phone. The badge keeps
-   its hidden "coming soon" text, and the full badge with its label stays on the page itself. */
+/* On a phone the header says only "Coming soon"; the rest stays for screen readers. */
 @media (max-width:459px){
-  .store.compact .soon-label{display:none}
+  .soon.compact .soon-more{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 }
