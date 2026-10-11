@@ -79,7 +79,7 @@ Sprint isn't made for children, and it doesn't ask for your age. If Apple Health
 
 ### Changes to this policy
 
-If what Sprint does with your data changes, we will update this page and its effective date.
+If what Sprint does with your data changes, we will update this page.
 
 ### Contact
 
@@ -88,7 +88,3 @@ If what Sprint does with your data changes, we will update this page and its eff
 **TODO (Dan): an email address or postal address for privacy questions.**
 
 For questions about how Apple handles data in its own services, see Apple's privacy policy, linked above.
-
-### Effective date
-
-**TODO (Dan): the date this policy takes effect, once a person has reviewed and approved it.** Drafted on 11 October 2026.
