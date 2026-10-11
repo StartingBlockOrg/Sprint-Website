@@ -65,13 +65,15 @@ test('the end dot closes a post only when it ends with a paragraph', async ({ pa
   expect(await dot('Fixture post ending in a list')).toBe('none');
 });
 
-test('a page file becomes a page, and a nav entry when nav is true', async ({ page }) => {
+test('a page file becomes a page, and a footer entry when nav is true', async ({ page }) => {
   await page.goto('fixture-page/');
   await expect(page).toHaveTitle('Fixture page · Sprint');
   await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', 'A generic page from the fixtures.');
-  await expect(page.getByRole('navigation', { name: 'Footer' }).getByRole('link')).toHaveText(['Blog', 'Fixture page']);
-  // The header lists pages only on wider screens; the footer always does.
-  await expect(page.locator('.site-nav a', { hasText: 'Fixture page' })).toHaveAttribute('aria-current', 'page');
+  const footer = page.getByRole('navigation', { name: 'Footer' });
+  await expect(footer.getByRole('link')).toHaveText(['Blog', 'Fixture page']);
+  await expect(footer.getByRole('link', { name: 'Fixture page' })).toHaveAttribute('aria-current', 'page');
+  // The header carries only the blog and the App Store button.
+  await expect(page.getByRole('navigation', { name: 'Site' }).getByRole('link')).toHaveText(['Blog']);
 
   await page.goto('fixture-unlisted/');
   await expect(page.getByRole('heading', { level: 1, name: 'Fixture unlisted page' })).toBeVisible();

@@ -11,7 +11,7 @@ export async function getPosts(): Promise<Post[]> {
   return posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime() || a.id.localeCompare(b.id));
 }
 
-/** Pages listed in the navigation, in file-name order. */
+/** Pages listed in the footer, in file-name order. */
 export async function getNavPages(): Promise<Page[]> {
   const pages = await getCollection('pages', ({ data }) => data.nav);
   return pages.sort((a, b) => a.id.localeCompare(b.id));

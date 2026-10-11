@@ -33,8 +33,8 @@ The post, in Markdown. Use ### for subheadings.
 ```
 
 A post dated in the future goes live on the first daily rebuild (05:17 UTC) on or after its date.
-Pages go in `src/content/pages/` with a `title`, `nav: true` or `nav: false` (listed in the header and
-footer or not) and an optional `description` for search results. Fields are checked: a missing,
+Pages go in `src/content/pages/` with a `title`, `nav: true` or `nav: false` (listed in the footer or
+not) and an optional `description` for search results. Fields are checked: a missing,
 misspelt or wrongly typed one fails the PR's checks, with the file and field named.
 
 The blog ships empty. Tests build the site a second time from `tests/fixtures/content`
