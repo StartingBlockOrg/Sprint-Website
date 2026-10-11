@@ -1,0 +1,38 @@
+---
+import { site } from '../lib/site';
+---
+<footer class="foot">
+  <span>Sprint for iPhone and Apple Watch</span>
+  {site.appStoreUrl && <span><a href={site.appStoreUrl}>App Store</a></span>}
+  <div class="theme-switch" role="group" aria-label="Theme" hidden>
+    <button type="button" data-theme-choice="auto" aria-pressed="true">Auto</button>
+    <button type="button" data-theme-choice="light" aria-pressed="false">Light</button>
+    <button type="button" data-theme-choice="dark" aria-pressed="false">Dark</button>
+  </div>
+  {/* Apple's marketing guidelines require this credit wherever the App Store badge appears. */}
+  <p class="credit">Apple, the Apple logo, Apple Watch and iPhone are trademarks of Apple Inc., registered in the U.S. and other countries. App Store is a service mark of Apple Inc.</p>
+</footer>
+
+<script>
+  // The switch needs JS, so it stays hidden without it; the system theme still applies.
+  const group = document.querySelector<HTMLElement>('.theme-switch');
+  if (group) {
+    const buttons = [...group.querySelectorAll<HTMLButtonElement>('[data-theme-choice]')];
+    const show = (choice: string) =>
+      buttons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.themeChoice === choice)));
+    show(document.documentElement.dataset.theme ?? 'auto');
+    group.hidden = false;
+    for (const button of buttons) {
+      button.addEventListener('click', () => {
+        const choice = button.dataset.themeChoice ?? 'auto';
+        if (choice === 'auto') delete document.documentElement.dataset.theme;
+        else document.documentElement.dataset.theme = choice;
+        try {
+          if (choice === 'auto') localStorage.removeItem('theme');
+          else localStorage.setItem('theme', choice);
+        } catch {}
+        show(choice);
+      });
+    }
+  }
+</script>

@@ -1,0 +1,55 @@
+@import "@fontsource-variable/newsreader/opsz.css";
+@import "./tokens.css";
+
+*{box-sizing:border-box}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + var(--header))}
+body{margin:0;min-height:100svh;display:flex;flex-direction:column;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.45;-webkit-font-smoothing:antialiased}
+main{flex:1}
+a{color:inherit}
+img{max-width:100%}
+[hidden]{display:none!important}
+:focus-visible{outline:2px solid var(--tint);outline-offset:3px;border-radius:4px}
+.tnum{font-variant-numeric:tabular-nums}
+.visually-hidden{position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.skip{position:absolute;left:var(--gutter);top:-100px;z-index:100;padding:8px 14px;border-radius:9px;background:var(--badge-bg);color:var(--badge-fg);text-decoration:none;font-size:15px}
+.skip:focus{top:calc(env(safe-area-inset-top,0px) + 10px)}
+
+/* Header */
+.site-head{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;height:var(--header);display:flex;align-items:center;justify-content:space-between;gap:16px;padding-inline:var(--gutter);background:var(--glass);-webkit-backdrop-filter:saturate(1.6) blur(18px);backdrop-filter:saturate(1.6) blur(18px);border-bottom:1px solid var(--rule)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--serif);font-weight:600;font-size:21px;letter-spacing:-.2px}
+.brand svg{width:28px;height:28px;border-radius:7px;flex:none}
+.site-nav{display:flex;align-items:center;gap:22px;font-size:15px}
+.site-nav a{text-decoration:none;color:var(--ink2)}
+.site-nav a:hover,.site-nav a[aria-current="page"]{color:var(--ink)}
+
+/* App Store badge: Apple's artwork, never restyled. Clear space is kept with margins. */
+.store{display:inline-flex;align-items:center;gap:calc(var(--badge-h,54px) / 4);margin:calc(var(--badge-h,54px) / 4);text-decoration:none;flex:none}
+.store img{display:block}
+.store.compact{margin:4px 0}
+.soon-label{color:var(--ink2);font-size:15px;font-weight:500;white-space:nowrap}
+.store.compact .soon-label{font-size:14px}
+.page .store{margin-block:0}
+
+/* Simple pages (placeholder home, 404) */
+.page{padding-inline:var(--gutter);padding-block:clamp(64px,12vw,160px);display:flex;flex-direction:column;align-items:center;gap:22px;text-align:center}
+.page .eyebrow{font-size:13px;font-weight:600;letter-spacing:.9px;text-transform:uppercase;color:var(--tint-text)}
+.page h1{margin:0;font-family:var(--serif);font-weight:500;font-size:clamp(40px,6.2vw,80px);line-height:1.02;letter-spacing:-.02em;text-wrap:balance;max-width:14ch}
+.page p{margin:0;max-width:34em;color:var(--ink2);font-size:clamp(17px,1.6vw,20px);text-wrap:balance}
+.more{color:var(--tint-text);font-size:15px;text-decoration:none;font-weight:500}
+
+/* Footer */
+/* The canvas sets the footer in --ink3, which is 3.1:1 on white and 4.0:1 on black: below AA for 14px text. */
+.foot{border-top:1px solid var(--rule);padding-inline:var(--gutter);padding-block:28px 40px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;color:var(--ink2);font-size:14px}
+.foot a{color:var(--ink2);text-decoration:none}
+.foot a:hover{color:var(--ink)}
+.credit{flex-basis:100%;margin:0;font-size:12px;line-height:1.5}
+.theme-switch{display:inline-flex;gap:2px;padding:2px;border-radius:9px;box-shadow:inset 0 0 0 1px var(--rule)}
+.theme-switch button{font:inherit;font-size:13px;color:var(--ink2);background:none;border:0;border-radius:7px;padding:4px 10px;cursor:pointer}
+.theme-switch button[aria-pressed="true"]{background:var(--rule);color:var(--ink)}
+
+@media (max-width:1023px){
+  .site-nav .hide-narrow{display:none}
+}
+@media (max-width:379px){
+  .store.compact .soon-label{display:none}
+}

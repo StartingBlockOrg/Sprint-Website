@@ -1,0 +1,29 @@
+---
+import { site, url } from '../lib/site';
+
+interface Props {
+  compact?: boolean;
+}
+
+// Apple's badge artwork, unmodified (developer.apple.com/app-store/marketing/guidelines). Apple has
+// no "coming soon" badge, so until the listing exists the badge is shown unlinked with a label beside
+// it. Rules kept here: at least 40px tall on screen, clear space of a quarter of its height (a tenth
+// in the header, Apple's "very limited layout"), never recoloured, resized out of proportion or animated.
+const BADGE = { src: url('/badges/download-on-the-app-store.svg'), width: 119.66407, height: 40 };
+
+const { compact = false } = Astro.props;
+const height = compact ? 40 : 54;
+const width = Math.round((BADGE.width / BADGE.height) * height);
+const href = site.appStoreUrl;
+---
+{href ? (
+  <a class:list={['store', compact && 'compact']} href={href} style={`--badge-h:${height}px`}>
+    <img src={BADGE.src} width={width} height={height} alt="Download on the App Store" />
+  </a>
+) : (
+  <span class:list={['store', 'soon', compact && 'compact']} style={`--badge-h:${height}px`}>
+    <img src={BADGE.src} width={width} height={height} alt="" />
+    <span class="soon-label" aria-hidden="true">Coming soon</span>
+    <span class="visually-hidden">Sprint is coming soon to the App Store</span>
+  </span>
+)}
