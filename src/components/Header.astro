@@ -2,18 +2,15 @@
 import Brand from './Brand.astro';
 import StoreButton from './StoreButton.astro';
 import { url } from '../lib/site';
-import { getNavPages, pageUrl } from '../lib/content';
 
-const path = Astro.url.pathname;
+// The header carries the blog and the App Store button only; pages are listed in the footer (WEB-6).
 const blog = url('/blog/');
-const pages = await getNavPages();
-const current = (href: string) => (path.startsWith(href) ? 'page' : undefined);
+const current = Astro.url.pathname.startsWith(blog) ? 'page' : undefined;
 ---
 <header class="site-head">
   <Brand />
   <nav class="site-nav" aria-label="Site">
-    <a href={blog} aria-current={current(blog)}>Blog</a>
-    {pages.map((page) => <a class="hide-narrow" href={pageUrl(page)} aria-current={current(pageUrl(page))}>{page.data.title}</a>)}
+    <a href={blog} aria-current={current}>Blog</a>
     <StoreButton compact />
   </nav>
 </header>
