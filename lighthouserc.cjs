@@ -7,7 +7,7 @@ module.exports = {
     collect: {
       startServerCommand: 'npx astro preview --port 4323 --ignore-lock',
       startServerReadyPattern: 'localhost:4323',
-      url: [`${origin}${base}/`, `${origin}${base}/blog/`, `${origin}${base}/404.html`],
+      url: [`${origin}${base}/`, `${origin}${base}/blog/`, `${origin}${base}/privacy/`, `${origin}${base}/404.html`],
       numberOfRuns: 1,
       settings: { preset: 'desktop', chromeFlags: '--no-sandbox' },
     },
