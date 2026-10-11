@@ -4,8 +4,6 @@ nav: true
 description: What Sprint stores, where it lives, what leaves your device, and the choices you have.
 ---
 
-<!-- TODO: this is a draft. A person must review it before it ships (WEB-9). Remove this comment once they have. -->
-
 This policy covers Sprint for iPhone and Apple Watch. It is short because Sprint does very little with your data: there are no accounts, no analytics, no advertising and no servers of ours. Your training stays on your devices and in your own iCloud. The only thing Sprint asks another service for is the weather, and that service is Apple's.
 
 ### What Sprint stores
@@ -75,16 +73,12 @@ We don't share your information with anyone else. Sprint contains no third-party
 
 Sprint isn't made for children, and it doesn't ask for your age. If Apple Health has your date of birth, Sprint uses it on your device to estimate your maximum heart rate. Because Sprint has no accounts and sends no personal information to us, we don't collect information from children, or from anyone else.
 
-**TODO (Dan): check this section against the age rating chosen in App Store Connect, and say who Sprint is meant for if that should be stated.**
-
 ### Changes to this policy
 
 If what Sprint does with your data changes, we will update this page.
 
 ### Contact
 
-**TODO (Dan): the name of the person or company responsible for Sprint and for this policy.**
-
-**TODO (Dan): an email address or postal address for privacy questions.**
+Sprint and this policy are the responsibility of Dan Lages. For privacy questions, email [danlages65@gmail.com](mailto:danlages65@gmail.com).
 
 For questions about how Apple handles data in its own services, see Apple's privacy policy, linked above.
