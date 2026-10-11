@@ -21,19 +21,14 @@ img{max-width:100%}
 .site-nav{display:flex;align-items:center;gap:22px;font-size:15px}
 .site-nav a{text-decoration:none;color:var(--ink2)}
 .site-nav a:hover,.site-nav a[aria-current="page"]{color:var(--ink)}
-.site-nav a.store,.site-nav a.store:hover{color:var(--badge-fg)}
 
-/* App Store button: the one main action */
-.store{display:inline-flex;align-items:center;gap:9px;background:var(--badge-bg);color:var(--badge-fg);text-decoration:none;border-radius:12px;padding:9px 18px 9px 14px;line-height:1.05;white-space:nowrap}
-.store svg{width:24px;height:24px;fill:currentColor;flex:none}
-.store small{display:block;font-size:11px;letter-spacing:.2px;opacity:.85}
-.store b{display:block;font-size:19px;font-weight:600;letter-spacing:-.2px}
-.store.compact{padding:6px 12px 6px 10px;border-radius:9px}
-.store.compact svg{width:16px;height:16px}
-.store.compact b{font-size:14px}
-.store.compact small{display:none}
-/* Until the listing exists the button is a label, not a link. */
-.store.soon{cursor:default}
+/* App Store badge: Apple's artwork, never restyled. Clear space is kept with margins. */
+.store{display:inline-flex;align-items:center;gap:calc(var(--badge-h,54px) / 4);margin:calc(var(--badge-h,54px) / 4);text-decoration:none;flex:none}
+.store img{display:block}
+.store.compact{margin:4px 0}
+.soon-label{color:var(--ink2);font-size:15px;font-weight:500;white-space:nowrap}
+.store.compact .soon-label{font-size:14px}
+.page .store{margin-block:0}
 
 /* Simple pages (placeholder home, 404) */
 .page{padding-inline:var(--gutter);padding-block:clamp(64px,12vw,160px);display:flex;flex-direction:column;align-items:center;gap:22px;text-align:center}
@@ -47,10 +42,14 @@ img{max-width:100%}
 .foot{border-top:1px solid var(--rule);padding-inline:var(--gutter);padding-block:28px 40px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;color:var(--ink2);font-size:14px}
 .foot a{color:var(--ink2);text-decoration:none}
 .foot a:hover{color:var(--ink)}
+.credit{flex-basis:100%;margin:0;font-size:12px;line-height:1.5}
 .theme-switch{display:inline-flex;gap:2px;padding:2px;border-radius:9px;box-shadow:inset 0 0 0 1px var(--rule)}
 .theme-switch button{font:inherit;font-size:13px;color:var(--ink2);background:none;border:0;border-radius:7px;padding:4px 10px;cursor:pointer}
 .theme-switch button[aria-pressed="true"]{background:var(--rule);color:var(--ink)}
 
 @media (max-width:1023px){
   .site-nav .hide-narrow{display:none}
+}
+@media (max-width:379px){
+  .store.compact .soon-label{display:none}
 }

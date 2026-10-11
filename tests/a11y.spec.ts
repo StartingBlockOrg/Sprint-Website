@@ -47,3 +47,9 @@ test('the system dark scheme applies without JS', async ({ browser }) => {
   await expect(page.getByRole('group', { name: 'Theme' })).toBeHidden();
   await context.close();
 });
+
+test('the App Store badge says the app is coming soon until the listing exists', async ({ page }) => {
+  await page.goto('./');
+  await expect(page.locator('a.store')).toHaveCount(0);
+  await expect(page.locator('.store.soon').first()).toContainText('Sprint is coming soon to the App Store');
+});
