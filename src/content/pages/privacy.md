@@ -6,7 +6,7 @@ description: What Sprint stores, where it lives, what leaves your device, and th
 
 This policy covers Sprint for iPhone and Apple Watch. It is short because Sprint does very little with your data: there are no accounts, no analytics, no advertising and no servers of ours. Your training stays on your devices and in your own iCloud. The only thing Sprint asks another service for is the weather, and that service is Apple's.
 
-### What Sprint stores
+## What Sprint stores
 
 Everything Sprint stores comes from you, or from your Watch while you train. None of it is sent to us.
 
@@ -15,7 +15,7 @@ Everything Sprint stores comes from you, or from your Watch while you train. Non
 - **Your plans**, and the sessions you schedule.
 - **Your settings.** Units, the distances you use, rest and reminder choices and, if you type one, the name Home greets you by.
 
-### What Sprint asks to use
+## What Sprint asks to use
 
 Sprint asks permission before it uses each of these, and uses them only to run the app.
 
@@ -29,7 +29,7 @@ Sprint asks permission before it uses each of these, and uses them only to run t
 
 While a session runs, Sprint can also show its live numbers, including your heart rate during rests, in a Live Activity on your iPhone's Lock Screen.
 
-### Where it lives
+## Where it lives
 
 - **On your devices.** Your iPhone, and your iPad if you use one, keep everything described above. Your Watch keeps your 10 most recent sessions, and any older one until your iPhone has confirmed it received it. Sprint keeps your data until you delete it.
 - **Health data stays on each device.** Your heart rate and active energy from a session are never put in iCloud. A second device, such as an iPad, rebuilds them from the session's workout in Apple Health, so it needs your permission to read Health.
@@ -37,7 +37,7 @@ While a session runs, Sprint can also show its live numbers, including your hear
 - **In Apple Health.** The workouts your Watch saves live in Apple Health and follow your Health settings.
 - **In your calendar**, if you ask for it, as described above.
 
-### What leaves your device
+## What leaves your device
 
 Sprint sends information off your device only to Apple, to do something you asked for.
 
@@ -49,7 +49,7 @@ Apple handles all of this under [Apple's privacy policy](https://www.apple.com/p
 
 We don't share your information with anyone else. Sprint contains no third-party analytics, advertising or other third-party code that can see your data.
 
-### What we never do
+## What we never do
 
 - We never ask you to create an account or sign in.
 - We never show advertising, and we never track you. Sprint doesn't follow you across other companies' apps and websites, and doesn't link your data with theirs.
@@ -57,7 +57,7 @@ We don't share your information with anyone else. Sprint contains no third-party
 - We never use your Apple Health data for advertising, marketing or data mining, and we never pass it to anyone else.
 - We don't use analytics or crash reporting.
 
-### Your choices
+## Your choices
 
 - **Turn off a permission.** You can allow or refuse Health, location, motion, calendar and notifications separately, and change your mind at any time. Use Settings on your iPhone, under Privacy & Security, or the Health app's sharing settings for Health. Sprint's own Settings has a Permissions page that shows where each one stands and opens Settings for you. Some features need a permission: for example, readiness needs Health, and the weather where you are needs location.
 - **Delete your data.** In Sprint, choose Settings, then Delete all data. It removes your sessions, plans and scheduled sessions from your iPhone, your Watch and iCloud. You can also delete a single session. Some things stay, because they belong to other apps or to the system:
@@ -69,15 +69,15 @@ We don't share your information with anyone else. Sprint contains no third-party
 - **Take your sessions with you.** In Settings, choose Export sessions for a CSV file of your sprints and a GPX file of your routes.
 - **Questions or requests.** We don't hold your data, so there is nothing on our side to look up or delete. If you have a question, contact us using the details below.
 
-### Children
+## Children
 
 Sprint isn't made for children, and it doesn't ask for your age. If Apple Health has your date of birth, Sprint uses it on your device to estimate your maximum heart rate. Because Sprint has no accounts and sends no personal information to us, we don't collect information from children, or from anyone else.
 
-### Changes to this policy
+## Changes to this policy
 
 If what Sprint does with your data changes, we will update this page.
 
-### Contact
+## Contact
 
 Sprint and this policy are the responsibility of Dan Lages. For privacy questions, email [danlages65@gmail.com](mailto:danlages65@gmail.com).
 
