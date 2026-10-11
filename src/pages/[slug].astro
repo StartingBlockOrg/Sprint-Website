@@ -1,0 +1,33 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Masthead from '../components/Masthead.astro';
+import type { Page } from '../lib/content';
+import { url } from '../lib/site';
+
+// A Markdown file in src/content/pages becomes a page at its file name.
+export const getStaticPaths = (async () => {
+  // These names belong to the site itself, so a page file using one would be shadowed: fail instead.
+  const RESERVED = new Set(['blog', 'og', '404', 'index', 'rss.xml']);
+  const pages = await getCollection('pages');
+  for (const page of pages) {
+    if (RESERVED.has(page.id)) throw new Error(`src/content/pages/${page.id}.md: "${page.id}" is taken by the site; rename the file.`);
+  }
+  return pages.map((page) => ({ params: { slug: page.id }, props: { page } }));
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props as { page: Page };
+const { title, description } = page.data;
+const { Content } = await render(page);
+---
+<Base title={title} description={description} image={url(`/og/pages/${page.id}.png`)}>
+  <div class="blog">
+    <div class="column">
+      <Masthead title={title} />
+      <div class="prose doc">
+        <Content />
+      </div>
+    </div>
+  </div>
+</Base>

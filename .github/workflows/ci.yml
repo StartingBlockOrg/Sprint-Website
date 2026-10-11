@@ -24,18 +24,24 @@ jobs:
           cache: npm
       - run: npm ci
 
+      - name: Frontmatter schema
+        run: npm run check:content
       - name: Type check
         run: npm run check
       - name: Build
         run: npm run build
+      - name: Build with fixture content
+        run: npm run build:fixtures
       - name: Image sizes
         run: npm run check:images
       - name: Links
         run: npm run check:links
+      - name: Links (fixture content)
+        run: npm run check:links:fixtures
 
       - name: Install Chromium for Playwright
         run: npx playwright install --with-deps chromium
-      - name: Accessibility (axe, light and dark)
+      - name: Accessibility and blog tests (axe, light and dark)
         run: npm run test:a11y
       - name: Lighthouse
         run: npx lhci autorun --config=lighthouserc.cjs

@@ -1,0 +1,25 @@
+---
+import { render } from 'astro:content';
+import { postUrl, sourceName, type Post } from '../lib/content';
+
+interface Props {
+  post: Post;
+  /** On the post's own page the title is the page heading, not a link to itself. */
+  solo?: boolean;
+}
+
+const { post, solo = false } = Astro.props;
+const { title, link } = post.data;
+const { Content } = await render(post);
+---
+<article class="post">
+  {solo ? (
+    <h1 class="post-title">{title}</h1>
+  ) : (
+    <h2 class="post-title"><a href={postUrl(post)}>{title}</a></h2>
+  )}
+  {link && <a class="src" href={link}><span aria-hidden="true">↗ </span>{sourceName(post)}</a>}
+  <div class="prose">
+    <Content />
+  </div>
+</article>

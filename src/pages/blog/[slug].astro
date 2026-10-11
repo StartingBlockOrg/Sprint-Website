@@ -1,0 +1,26 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Base from '../../layouts/Base.astro';
+import Post from '../../components/Post.astro';
+import { formatDay, getPosts, isoDay, type Post as PostEntry } from '../../lib/content';
+import { url } from '../../lib/site';
+
+export const getStaticPaths = (async () => {
+  const posts = await getPosts();
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}) satisfies GetStaticPaths;
+
+const { post } = Astro.props as { post: PostEntry };
+const { title, date } = post.data;
+const blog = url('/blog/');
+---
+<Base title={title} image={url(`/og/blog/${post.id}.png`)} published={date}>
+  <div class="blog post-page">
+    <div class="column">
+      <a class="back" href={blog}>← All posts</a>
+      <p class="day"><time datetime={isoDay(date)}>{formatDay(date)}</time></p>
+      <Post post={post} solo />
+      <p class="blog-end"><a class="more" href={blog}>← All posts</a></p>
+    </div>
+  </div>
+</Base>

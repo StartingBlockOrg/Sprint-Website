@@ -9,11 +9,16 @@ interface Props {
   description?: string;
   /** Keeps the page out of search results and leaves out its canonical link (the 404 page). */
   noindex?: boolean;
+  /** The Open Graph image, a site path from `url()`. Defaults to the site's card. */
+  image?: string;
+  /** Set on a blog post: marks the page as an article and records when it was published. */
+  published?: Date;
 }
 
-const { title, description = site.description, noindex = false } = Astro.props;
+const { title, description = site.description, noindex = false, image = url('/og/site.png'), published } = Astro.props;
 const fullTitle = title ? `${title} · ${site.name}` : `${site.name} for iPhone and Apple Watch`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const imageUrl = new URL(image, Astro.site);
 ---
 <!doctype html>
 <html lang="en-GB">
@@ -24,13 +29,21 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta name="description" content={description} />
     {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
     <link rel="icon" href={url('/favicon.svg')} type="image/svg+xml" />
+    <link rel="alternate" type="application/rss+xml" title={`${site.name} blog`} href={url('/rss.xml')} />
+    <link rel="sitemap" href={url('/sitemap-index.xml')} />
     <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
     <meta property="og:site_name" content={site.name} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     {!noindex && <meta property="og:url" content={canonical} />}
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={published ? 'article' : 'website'} />
+    {published && <meta property="article:published_time" content={published.toISOString()} />}
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={title ?? site.name} />
+    <meta name="twitter:card" content="summary_large_image" />
     <script is:inline>
       // Apply a saved theme before first paint, so a dark choice never flashes light.
       try {

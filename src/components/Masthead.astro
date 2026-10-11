@@ -1,0 +1,17 @@
+---
+import { url } from '../lib/site';
+
+interface Props {
+  title: string;
+  lede?: string;
+}
+
+const { title, lede } = Astro.props;
+// The track surface from the canvas: the line the blog starts from.
+const surface = `background-image:url(${url('/track-surface.webp')})`;
+---
+<header class="masthead">
+  <h1>{title}</h1>
+  {lede && <p>{lede}</p>}
+  <div class="mast-kerb" style={surface} aria-hidden="true"></div>
+</header>
