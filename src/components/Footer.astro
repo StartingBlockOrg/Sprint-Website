@@ -8,7 +8,7 @@ const pages = await getNavPages();
   <span>Sprint for iPhone and Apple Watch</span>
   <nav class="foot-nav" aria-label="Footer">
     <a href={url('/blog/')}>Blog</a>
-    {pages.map((page) => <a href={pageUrl(page)}>{page.data.title}</a>)}
+    {pages.map((page) => <a href={pageUrl(page)} aria-current={Astro.url.pathname.startsWith(pageUrl(page)) ? 'page' : undefined}>{page.data.title}</a>)}
     {site.appStoreUrl && <a href={site.appStoreUrl}>App Store</a>}
   </nav>
   <div class="theme-switch" role="group" aria-label="Theme" hidden>

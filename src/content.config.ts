@@ -25,7 +25,7 @@ const pages = defineCollection({
   loader: glob({ pattern: '*.md', base: `${contentRoot}/pages` }),
   schema: z.strictObject({
     title: z.string().trim().min(1),
-    // Adds the page to the header and footer navigation.
+    // Lists the page in the footer.
     nav: z.boolean(),
     description: z.string().trim().min(1).optional(),
   }),
