@@ -1,0 +1,21 @@
+---
+import AppleLogo from './AppleLogo.astro';
+import { site } from '../lib/site';
+
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+const href = site.appStoreUrl;
+const className = ['store', compact && 'compact', !href && 'soon'];
+---
+{href ? (
+  <a class:list={className} href={href} aria-label="Download Sprint on the App Store">
+    <AppleLogo /><span><small>Download on the</small><b>App Store</b></span>
+  </a>
+) : (
+  <span class:list={className} role="img" aria-label="Sprint is coming soon to the App Store">
+    <AppleLogo /><span><small>Coming soon to the</small><b>{compact ? 'Coming soon' : 'App Store'}</b></span>
+  </span>
+)}

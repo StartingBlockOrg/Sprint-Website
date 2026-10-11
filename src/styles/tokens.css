@@ -1,0 +1,37 @@
+/* Design tokens, copied from the web canvas (https://claude.ai/artifact/W4mzHmD7jKCmA1R1mhtzFF).
+   Light by default; dark from the system unless the page sets data-theme="light", or always with
+   data-theme="dark". Keep the two dark blocks identical. */
+:root{
+  --bg:#FFFFFF;
+  --ink:#141211;
+  --ink2:rgba(20,18,17,.64);
+  --ink3:rgba(20,18,17,.46);
+  --rule:rgba(20,18,17,.12);
+  --tint:#E0592B;            /* the app's tint: fills, dots, large type */
+  --tint-text:#B8431C;       /* tint for text on white: 5.4:1 */
+  --watch-text:#A35F00;
+  --kerb:#D9D4CE;
+  --badge-bg:#000; --badge-fg:#fff;
+  --glass:rgba(255,255,255,.82);
+  --shadow:rgba(20,18,17,.18);
+  /* The app's own palette: screens stay black in both themes. */
+  --a-bg:#000; --a-fg:#fff; --a-l2:rgba(235,235,245,.6); --a-l3:rgba(235,235,245,.45);
+  --a-hair:rgba(255,255,255,.12); --a-fill:rgba(120,120,128,.24); --a-tint:#E0592B; --a-tintt:#F2774D;
+  --a-hr:#64D2FF; --a-good:#30D158; --a-watch:#FFB340; --a-poor:#FF6B4A; --a-yellow:#FFD60A;
+  --case:#1C1C1E; --case-edge:#3A3A3C;
+  --serif:ui-serif,"New York","Newsreader Variable","Newsreader",Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  --display:-apple-system,BlinkMacSystemFont,"SF Pro Display",system-ui,"Segoe UI",Roboto,sans-serif;
+  --gutter:clamp(16px,5vw,64px);
+  --header:56px;
+  --kerb-show:none;          /* the track strip reads only on black */
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#000; --ink:#FFFFFF; --ink2:rgba(235,235,245,.64); --ink3:rgba(235,235,245,.46); --rule:rgba(255,255,255,.14);
+  --tint-text:#F2774D; --watch-text:#FFB340; --kerb:rgba(235,235,245,.55); --badge-bg:#fff; --badge-fg:#000;
+  --glass:rgba(0,0,0,.72); --shadow:rgba(0,0,0,.6); --case:#2C2C2E; --case-edge:#48484A; --kerb-show:block; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#000; --ink:#FFFFFF; --ink2:rgba(235,235,245,.64); --ink3:rgba(235,235,245,.46); --rule:rgba(255,255,255,.14);
+  --tint-text:#F2774D; --watch-text:#FFB340; --kerb:rgba(235,235,245,.55); --badge-bg:#fff; --badge-fg:#000;
+  --glass:rgba(0,0,0,.72); --shadow:rgba(0,0,0,.6); --case:#2C2C2E; --case-edge:#48484A; --kerb-show:block; color-scheme:dark}

@@ -1,0 +1,12 @@
+---
+import Base from '../layouts/Base.astro';
+import { url } from '../lib/site';
+---
+<Base title="Page not found" noindex>
+  <section class="page">
+    <div class="eyebrow">404</div>
+    <h1>Off the track.</h1>
+    <p>There’s no page at this address. It may have moved, or the link may be wrong.</p>
+    <a class="more" href={url('/')}>← Back to Sprint</a>
+  </section>
+</Base>
