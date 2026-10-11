@@ -1,9 +1,16 @@
 ---
-import { site } from '../lib/site';
+import { site, url } from '../lib/site';
+import { getNavPages, pageUrl } from '../lib/content';
+
+const pages = await getNavPages();
 ---
 <footer class="foot">
   <span>Sprint for iPhone and Apple Watch</span>
-  {site.appStoreUrl && <span><a href={site.appStoreUrl}>App Store</a></span>}
+  <nav class="foot-nav" aria-label="Footer">
+    <a href={url('/blog/')}>Blog</a>
+    {pages.map((page) => <a href={pageUrl(page)}>{page.data.title}</a>)}
+    {site.appStoreUrl && <a href={site.appStoreUrl}>App Store</a>}
+  </nav>
   <div class="theme-switch" role="group" aria-label="Theme" hidden>
     <button type="button" data-theme-choice="auto" aria-pressed="true">Auto</button>
     <button type="button" data-theme-choice="light" aria-pressed="false">Light</button>

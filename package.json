@@ -8,23 +8,35 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "build:fixtures": "CONTENT_FIXTURES=1 astro build",
     "preview": "astro preview --port 4321",
     "check": "astro check",
+    "check:content": "astro sync",
     "check:images": "node scripts/check-image-sizes.mjs",
     "check:links": "node scripts/check-links.mjs",
+    "check:links:fixtures": "CONTENT_FIXTURES=1 node scripts/check-links.mjs",
     "test:a11y": "playwright test",
-    "lighthouse": "lhci autorun"
+    "lighthouse": "lhci autorun",
+    "new-post": "node scripts/new-post.mjs"
   },
   "dependencies": {
+    "@astrojs/rss": "4.0.19",
+    "@astrojs/sitemap": "3.7.4",
     "@fontsource-variable/newsreader": "5.3.0",
     "astro": "7.3.8"
   },
   "devDependencies": {
     "@astrojs/check": "0.9.10",
     "@axe-core/playwright": "4.13.0",
+    "@fontsource/newsreader": "5.3.0",
     "@lhci/cli": "0.15.1",
     "@playwright/test": "1.64.0",
+    "@resvg/resvg-js": "2.6.2",
     "linkinator": "8.1.0",
+    "satori": "0.33.5",
     "typescript": "6.0.3"
+  },
+  "overrides": {
+    "fflate": "0.7.5"
   }
 }

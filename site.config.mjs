@@ -5,3 +5,9 @@ export const siteUrl = (process.env.SITE_URL || 'https://startingblockorg.github
 export const basePath = process.env.BASE_PATH || '/Sprint-Website';
 /** The base path without a trailing slash, for building local URLs ('' at the root). */
 export const basePrefix = basePath.replace(/\/$/, '');
+
+// Tests build the site a second time from fixture content (CONTENT_FIXTURES=1), into its own folder,
+// so the fixture posts and pages never reach the production build in dist.
+export const fixtures = Boolean(process.env.CONTENT_FIXTURES);
+export const contentRoot = fixtures ? './tests/fixtures/content' : './src/content';
+export const outDir = fixtures ? './dist-fixtures' : './dist';

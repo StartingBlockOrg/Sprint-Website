@@ -3,6 +3,9 @@ name: Deploy
 on:
   push:
     branches: [main]
+  # Daily, so a post dated in the future goes live on its day with no new commit.
+  schedule:
+    - cron: '17 5 * * *'
   workflow_dispatch:
 
 # One deploy at a time; a newer push waits rather than cancelling one already publishing.

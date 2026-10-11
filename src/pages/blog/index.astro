@@ -1,0 +1,30 @@
+---
+import Base from '../../layouts/Base.astro';
+import Masthead from '../../components/Masthead.astro';
+import Post from '../../components/Post.astro';
+import { formatDay, formatMonth, getPosts, groupByDay, isoDay } from '../../lib/content';
+
+// Every post on one page, newest first, under the day it was published. No pagination.
+const posts = await getPosts();
+const days = groupByDay(posts);
+const first = posts.at(-1);
+const lede = 'Notes from building Sprint, and links worth reading about running fast.';
+---
+<Base title="Blog" description={lede}>
+  <div class="blog">
+    <div class="column">
+      <Masthead title="Blog" lede={lede} />
+      {days.map(({ day, posts }) => (
+        <section class="day-group">
+          <p class="day"><time datetime={isoDay(day)}>{formatDay(day)}</time></p>
+          {posts.map((post) => <Post post={post} />)}
+        </section>
+      ))}
+      {first ? (
+        <p class="blog-end">That’s every post. The first one was in {formatMonth(first.data.date)}.</p>
+      ) : (
+        <p class="blog-empty">No posts yet.</p>
+      )}
+    </div>
+  </div>
+</Base>
