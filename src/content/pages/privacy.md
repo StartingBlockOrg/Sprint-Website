@@ -23,11 +23,10 @@ Sprint asks permission before it uses each of these, and uses them only to run t
   - Your Watch saves each session to Apple Health as a workout. Sprint reads back only the workouts it saved itself.
   - The other readings are for your readiness score, your cardio fitness and your heart-rate zones (your date of birth gives an estimate of your maximum heart rate). Sprint doesn't save those readings itself.
 - **Location.** Your Watch uses GPS while a session runs, to measure each sprint's distance and speed and to record the route. Your iPhone asks for one location, to about 100 metres, while you are using the app, to show the weather where you are.
-- **Motion.** While a session runs, your Watch reads its motion sensors to tell when each sprint ends. Sprint doesn't save the raw readings, only the times and distances worked out from them.
 - **Calendar.** If you ask for planned sessions to appear in your calendar, Sprint adds events (title, date, time, length and place, if any) to your default calendar. It has write-only access: it can add events but can't read your calendar.
 - **Notifications.** Sprint reminds you of planned sessions. The reminders are scheduled on your device.
 
-While a session runs, Sprint can also show its live numbers, including your heart rate during rests, in a Live Activity on your iPhone's Lock Screen.
+While a session runs, your Watch also reads its motion sensors to tell when each sprint ends. This doesn't need your permission. Sprint doesn't save the raw readings, only the times and distances worked out from them.
 
 ## Where it lives
 
@@ -59,7 +58,7 @@ We don't share your information with anyone else. Sprint contains no third-party
 
 ## Your choices
 
-- **Turn off a permission.** You can allow or refuse Health, location, motion, calendar and notifications separately, and change your mind at any time. Use Settings on your iPhone, under Privacy & Security, or the Health app's sharing settings for Health. Sprint's own Settings has a Permissions page that shows where each one stands and opens Settings for you. Some features need a permission: for example, readiness needs Health, and the weather where you are needs location.
+- **Turn off a permission.** You can allow or refuse Health, location, calendar and notifications separately, and change your mind at any time. Use Settings on your iPhone, under Privacy & Security, or the Health app's sharing settings for Health. Sprint's own Settings has a Permissions page that shows where each one stands and opens Settings for you. Some features need a permission: for example, readiness needs Health, and the weather where you are needs location.
 - **Delete your data.** In Sprint, choose Settings, then Delete all data. It removes your sessions, plans and scheduled sessions from your iPhone, your Watch and iCloud. You can also delete a single session. Some things stay, because they belong to other apps or to the system:
   - Workouts already saved in Apple Health. Delete them in the Health app.
   - Events already added to your calendar. Delete them in Calendar.
