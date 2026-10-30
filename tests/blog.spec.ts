@@ -70,10 +70,14 @@ test('a page file becomes a page, and a footer entry when nav is true', async ({
   await expect(page).toHaveTitle('Fixture page · Sprint');
   await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', 'A generic page from the fixtures.');
   const footer = page.getByRole('navigation', { name: 'Footer' });
-  await expect(footer.getByRole('link')).toHaveText(['Blog', 'Fixture page']);
+  // Listed pages sit between the blog and the App Store link.
+  await expect(footer.getByRole('link')).toHaveText(['Blog', 'Fixture page', 'App Store']);
   await expect(footer.getByRole('link', { name: 'Fixture page' })).toHaveAttribute('aria-current', 'page');
   // The header carries only the blog and the App Store button.
-  await expect(page.getByRole('navigation', { name: 'Site' }).getByRole('link')).toHaveText(['Blog']);
+  const site = page.getByRole('navigation', { name: 'Site' }).getByRole('link');
+  await expect(site).toHaveCount(2);
+  await expect(site.first()).toHaveText('Blog');
+  await expect(site.last()).toHaveAccessibleName('Download on the App Store');
 
   await page.goto('fixture-unlisted/');
   await expect(page.getByRole('heading', { level: 1, name: 'Fixture unlisted page' })).toBeVisible();

@@ -38,16 +38,8 @@ img{max-width:100%}
 .page p{margin:0;max-width:34em;color:var(--ink2);font-size:clamp(17px,1.6vw,20px);text-wrap:balance}
 .more{color:var(--tint-text);font-size:15px;text-decoration:none;font-weight:500}
 
-/* Home screenshots: one row, centred when it fits, scrolled sideways (with snapping) when it doesn't.
-   The watch sits at about three quarters of the phone's height, as in the App Store frames. */
-.shots{padding-bottom:clamp(56px,9vw,128px)}
-.shots-row{list-style:none;margin:0;padding:8px var(--gutter) 20px;display:flex;align-items:flex-end;justify-content:safe center;gap:clamp(20px,3vw,44px);overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--gutter);scrollbar-width:thin}
-.shot{flex:none;scroll-snap-align:center}
-.shot figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:18px}
-.shot img{display:block;max-width:none;width:auto;filter:drop-shadow(0 18px 28px var(--shadow))}
-.shot.phone img{height:clamp(400px,44vw,560px)}
-.shot.watch img{height:clamp(290px,32vw,410px)}
-.shot figcaption{max-width:14em;text-align:center;text-wrap:balance;font-family:var(--serif);font-size:19px;line-height:1.25;color:var(--ink)}
+/* Home screenshot: the iPhone and Apple Watch together, from the App Store hero frame. */
+.hero-shot{display:block;width:min(100%,466px);height:auto;margin-top:clamp(16px,3vw,32px);filter:drop-shadow(0 24px 36px var(--shadow))}
 
 /* Blog and generic pages: one column for reading on screen. Small grey text uses --ink2, not the
    canvas's --ink3, which is below AA at these sizes (as in the footer). */
