@@ -1,13 +1,44 @@
 ---
 // Placeholder until the landing story (WEB-15, WEB-8) replaces it with the approved copy.
+// The screenshots are the App Store listing captures from the brand canvas, framed as on the listing.
 import Base from '../layouts/Base.astro';
 import StoreButton from '../components/StoreButton.astro';
+import { url } from '../lib/site';
+
+const PHONE = { width: 588, height: 1200 };
+const WATCH = { width: 512, height: 768 };
+const shots = [
+  { src: 'watch-home', size: WATCH, device: 'watch', caption: 'Time every sprint from your wrist.',
+    alt: 'Sprint on Apple Watch: a 100 metre sprint ready to start.' },
+  { src: 'iphone-home', size: PHONE, device: 'phone', caption: 'Know when you’re ready to sprint.',
+    alt: 'Sprint on iPhone, Home: readiness at 83%, ready to sprint, with HRV, resting heart rate and sleep.' },
+  { src: 'iphone-plans', size: PHONE, device: 'phone', caption: 'Know every rep before you warm up.',
+    alt: 'Sprint on iPhone, Plans: this week’s sessions and up next, Acceleration, 6 × 30 metres.' },
+  { src: 'iphone-history', size: PHONE, device: 'phone', caption: 'Watch your times come down.',
+    alt: 'Sprint on iPhone, Sprints: personal bests at each distance and October’s sessions.' },
+  { src: 'watch-history', size: WATCH, device: 'watch', caption: 'Your history, on your wrist.',
+    alt: 'Sprint on Apple Watch: recent sessions with their best times.' },
+] as const;
 ---
 <Base>
   <section class="page">
-    <div class="eyebrow">For iPhone and Apple Watch</div>
+    <div class="eyebrow">Now live on the App Store</div>
     <h1>Sprint</h1>
-    <p>Track sprint training, timed from your wrist.</p>
+    <p>Track sprint training on iPhone and Apple Watch, timed from your wrist.</p>
     <StoreButton />
+  </section>
+  <section class="shots" aria-labelledby="shots-title">
+    <h2 id="shots-title" class="visually-hidden">Screenshots</h2>
+    <ul class="shots-row" role="list" tabindex="0" aria-label="Screenshots, scroll for more">
+      {shots.map((shot) => (
+        <li class:list={['shot', shot.device]}>
+          <figure>
+            <img src={url(`/screenshots/${shot.src}.webp`)} width={shot.size.width} height={shot.size.height}
+              alt={shot.alt} loading="lazy" decoding="async" />
+            <figcaption>{shot.caption}</figcaption>
+          </figure>
+        </li>
+      ))}
+    </ul>
   </section>
 </Base>
