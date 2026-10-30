@@ -8,8 +8,8 @@ interface Props {
 // Apple's badge artwork, unmodified (developer.apple.com/app-store/marketing/guidelines). Rules kept
 // here: at least 40px tall on screen, clear space of a quarter of its height (a tenth in the header,
 // Apple's "very limited layout"), never recoloured, resized out of proportion or animated.
-// Apple licenses the badge only for apps available for download, so until the listing exists
-// (site.appStoreUrl) this is plain text with no badge shape (WEB-6).
+// Apple licenses the badge only for apps available for download, so it shows only while
+// site.appStoreUrl is set; without it this falls back to plain text with no badge shape (WEB-6).
 const BADGE = { src: url('/badges/download-on-the-app-store.svg'), width: 119.66407, height: 40 };
 
 const { compact = false } = Astro.props;

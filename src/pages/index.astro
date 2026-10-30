@@ -1,13 +1,17 @@
 ---
 // Placeholder until the landing story (WEB-15, WEB-8) replaces it with the approved copy.
+// The screenshot is the hero frame of the App Store listing from the brand canvas (Screenshot 1):
+// the iPhone Home screen over the Apple Watch, without the frame's headline and background.
 import Base from '../layouts/Base.astro';
 import StoreButton from '../components/StoreButton.astro';
+import { url } from '../lib/site';
 ---
 <Base>
   <section class="page">
-    <div class="eyebrow">For iPhone and Apple Watch</div>
     <h1>Sprint</h1>
-    <p>Track sprint training, timed from your wrist.</p>
+    <p>Track sprint training on iPhone and Apple Watch, timed from your wrist.</p>
     <StoreButton />
+    <img class="hero-shot" src={url('/screenshots/iphone-and-watch.webp')} width="931" height="1120"
+      alt="Sprint on Apple Watch, ready to start a 100 metre sprint, beside Sprint on iPhone showing readiness at 83% and ready to sprint." />
   </section>
 </Base>

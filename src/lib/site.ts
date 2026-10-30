@@ -1,8 +1,8 @@
 export const site = {
   name: 'Sprint',
   description: 'Sprint for iPhone and Apple Watch: track sprint training, timed from your wrist.',
-  // Null until the App Store listing exists; the App Store button shows its "coming soon" state.
-  appStoreUrl: null as string | null,
+  // The live App Store listing. Set to null to bring back the button's "coming soon" state.
+  appStoreUrl: 'https://apps.apple.com/gb/app/sprint-watch-sprint-tracker/id6820784230' as string | null,
 };
 
 /** Prefixes a site path with the configured base path, so links survive the move to a custom domain. */

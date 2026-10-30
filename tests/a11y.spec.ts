@@ -52,9 +52,20 @@ test('the system dark scheme applies without JS', async ({ browser }) => {
   await context.close();
 });
 
-test('until the listing exists, the App Store button is plain text with no badge', async ({ page }) => {
+test('the App Store badge links to the live listing, in the header and the hero', async ({ page }) => {
   await page.goto('./');
-  await expect(page.locator('.store')).toHaveCount(0);
-  await expect(page.locator('img[src$="download-on-the-app-store.svg"]')).toHaveCount(0);
-  await expect(page.locator('.soon')).toHaveText(['Coming soon to the App Store', 'Coming soon to the App Store']);
+  const listing = 'https://apps.apple.com/gb/app/sprint-watch-sprint-tracker/id6820784230';
+  const badges = page.getByRole('link', { name: 'Download on the App Store' });
+  await expect(badges).toHaveCount(2);
+  for (const badge of await badges.all()) await expect(badge).toHaveAttribute('href', listing);
+  await expect(page.locator('.soon')).toHaveCount(0);
+  await expect(page.getByRole('contentinfo').getByRole('link', { name: 'App Store' })).toHaveAttribute('href', listing);
+});
+
+test('the home page shows the iPhone and Apple Watch screenshot, described', async ({ page }) => {
+  await page.goto('./');
+  const shot = page.locator('.hero-shot');
+  await expect(shot).toHaveCount(1);
+  await expect(shot).toHaveAttribute('alt', /Apple Watch.*iPhone/);
+  await expect.poll(() => shot.evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0)).toBe(true);
 });

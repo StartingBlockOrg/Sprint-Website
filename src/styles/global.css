@@ -38,6 +38,9 @@ img{max-width:100%}
 .page p{margin:0;max-width:34em;color:var(--ink2);font-size:clamp(17px,1.6vw,20px);text-wrap:balance}
 .more{color:var(--tint-text);font-size:15px;text-decoration:none;font-weight:500}
 
+/* Home screenshot: the iPhone and Apple Watch together, from the App Store hero frame. */
+.hero-shot{display:block;width:min(100%,466px);height:auto;margin-top:clamp(16px,3vw,32px);filter:drop-shadow(0 24px 36px var(--shadow))}
+
 /* Blog and generic pages: one column for reading on screen. Small grey text uses --ink2, not the
    canvas's --ink3, which is below AA at these sizes (as in the footer). */
 .blog{padding-inline:var(--gutter);padding-bottom:clamp(48px,8vw,96px)}
