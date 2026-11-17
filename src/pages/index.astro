@@ -5,13 +5,22 @@
 import Base from '../layouts/Base.astro';
 import StoreButton from '../components/StoreButton.astro';
 import { url } from '../lib/site';
+
+const shot = url('/screenshots/iphone-and-watch.webp');
 ---
 <Base>
   <section class="page">
     <h1>Sprint</h1>
     <p>Track sprint training on iPhone and Apple Watch, timed from your wrist.</p>
     <StoreButton />
-    <img class="hero-shot" src={url('/screenshots/iphone-and-watch.webp')} width="931" height="1120"
-      alt="Sprint on Apple Watch, ready to start a 100 metre sprint, beside Sprint on iPhone showing readiness at 83% and ready to sprint." />
+    {/* The watch and the phone fade up one after the other on load. They share one image, so each
+        is a decorative copy clipped to its device; the described image takes over when they settle.
+        With reduced motion only the described image shows. See .hero-devices in global.css. */}
+    <div class="hero-devices">
+      <img class="hero-layer hero-watch" src={shot} width="931" height="1120" alt="" />
+      <img class="hero-layer hero-phone" src={shot} width="931" height="1120" alt="" />
+      <img class="hero-shot" src={shot} width="931" height="1120" fetchpriority="high"
+        alt="Sprint on Apple Watch, ready to start a 100 metre sprint, beside Sprint on iPhone showing readiness at 83% and ready to sprint." />
+    </div>
   </section>
 </Base>
