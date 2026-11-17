@@ -38,8 +38,27 @@ img{max-width:100%}
 .page p{margin:0;max-width:34em;color:var(--ink2);font-size:clamp(17px,1.6vw,20px);text-wrap:balance}
 .more{color:var(--tint-text);font-size:15px;text-decoration:none;font-weight:500}
 
-/* Home screenshot: the iPhone and Apple Watch together, from the App Store hero frame. */
-.hero-shot{display:block;width:min(100%,466px);height:auto;margin-top:clamp(16px,3vw,32px);filter:drop-shadow(0 24px 36px var(--shadow))}
+/* Home screenshot: the iPhone and Apple Watch together, from the App Store hero frame. The shadow is
+   on the wrapper so it follows the devices as they move. */
+.hero-devices{position:relative;width:min(100%,466px);margin-top:clamp(16px,3vw,32px);filter:drop-shadow(0 24px 36px var(--shadow))}
+.hero-shot{position:relative;display:block;width:100%;height:auto}
+.hero-layer{display:none}
+/* Entrance: the watch, then the phone, fade up. Each layer is the same image clipped to one device
+   along the phone's left edge (just outside its side buttons, so they stay with the phone). When
+   both have settled, the described image appears on top, pixel for pixel, and the layers hide, so
+   no seam is left at rest. CSS only: without JS the animation still runs. */
+@media (prefers-reduced-motion: no-preference){
+  /* --settled must come after the phone finishes (--phone-at + --rise). */
+  .hero-devices{--rise:1.6s;--watch-at:.2s;--phone-at:.45s;--settled:2.1s}
+  .hero-layer{display:block;position:absolute;inset:0;width:100%;height:100%;
+    animation:hero-rise var(--rise) cubic-bezier(.22,.61,.36,1) both,hero-hide 0s var(--settled) forwards}
+  .hero-watch{clip-path:polygon(0 0,44.68% 0,30.08% 100%,0 100%);animation-delay:var(--watch-at),var(--settled)}
+  .hero-phone{clip-path:polygon(44.68% 0,100% 0,100% 100%,30.08% 100%);animation-delay:var(--phone-at),var(--settled)}
+  .hero-shot{animation:hero-show 0s var(--settled) both}
+}
+@keyframes hero-rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes hero-show{from{opacity:0}to{opacity:1}}
+@keyframes hero-hide{to{visibility:hidden}}
 
 /* Blog and generic pages: one column for reading on screen. Small grey text uses --ink2, not the
    canvas's --ink3, which is below AA at these sizes (as in the footer). */
